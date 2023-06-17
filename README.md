@@ -1,2 +1,2 @@
 # netlingo
-Language learning app for the Advanced React Workshop for Netcentric
+Language learning app inspired by Duolingo for the Advanced React Workshop for Netcentric
