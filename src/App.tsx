@@ -8,7 +8,10 @@ export const App = () => (
     <Box minH="100vh" fontSize="xl">
       <Sidebar>
         <Grid p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
+          <ColorModeSwitcher
+            justifySelf="flex-end"
+            display={{ base: "none", md: "flex" }}
+          />
         </Grid>
       </Sidebar>
     </Box>

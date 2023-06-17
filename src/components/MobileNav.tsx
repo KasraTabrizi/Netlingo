@@ -7,7 +7,7 @@ import {
   FlexProps,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
-
+import { ColorModeSwitcher } from "../ColorModeSwitcher";
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
@@ -22,7 +22,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent="flex-start"
+      justifyContent="space-between"
       {...rest}
     >
       <IconButton
@@ -31,10 +31,13 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         aria-label="open menu"
         icon={<FiMenu />}
       />
-
-      <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+      <Text fontSize="2xl" ml="8" fontWeight="bold" color="purple.600">
+        Netlingo
       </Text>
+      <ColorModeSwitcher
+        justifySelf="flex-end"
+        display={{ base: "flex", md: "none" }}
+      />
     </Flex>
   );
 };
