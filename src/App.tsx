@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ChakraProvider, Box, Flex, theme } from "@chakra-ui/react";
 import units from "./components/Unit/units.json";
-// import { ColorModeSwitcher } from "./ColorModeSwitcher";
 import Sidebar from "./components/Navbar/Sidebar";
 import StatusBar from "./components/StatusBar";
 import Unit from "./components/Unit/Unit";

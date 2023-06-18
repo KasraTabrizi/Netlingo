@@ -4,7 +4,14 @@
     "color": "green.400",
     "lessons": [
       {
-        "name": "Greetings"
+        "name": "Greetings",
+        "exercises": [
+          {
+            "mode": "multiple-choice",
+            "question": "",
+            "answers": [""]
+          }
+        ]
       },
       {
         "name": "What is your age?"
