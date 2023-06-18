@@ -1,18 +1,31 @@
 import * as React from "react";
-import { ChakraProvider, Box, Grid, theme } from "@chakra-ui/react";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import Sidebar from "./components/Sidebar/Sidebar";
+import { ChakraProvider, Box, Flex, theme } from "@chakra-ui/react";
+// import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import Sidebar from "./components/Navbar/Sidebar";
+import StatusBar from "./components/StatusBar";
+
+const list = {
+  language: "Spanish",
+  streak: 0,
+  coins: 0,
+  experience: 0,
+};
 
 export const App = () => (
   <ChakraProvider theme={theme}>
     <Box minH="100vh" fontSize="xl">
       <Sidebar>
-        <Grid p={3}>
-          <ColorModeSwitcher
-            justifySelf="flex-end"
-            display={{ base: "none", md: "flex" }}
-          />
-        </Grid>
+        <Flex
+          p="5"
+          alignItems="flex-start"
+          justifyContent="space-between"
+          flexDirection={{ base: "column-reverse", md: "row" }}
+        >
+          <Box minH="100vh" w="full" border="1px">
+            Unit
+          </Box>
+          <StatusBar list={list} />
+        </Flex>
       </Sidebar>
     </Box>
   </ChakraProvider>
