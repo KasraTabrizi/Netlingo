@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Form basic sentences, greet people",
+    "color": "green.400",
+    "lessons": [
+      {
+        "name": "Greetings"
+      },
+      {
+        "name": "What is your age?"
+      }
+    ]
+  },
+  {
+    "name": "Food and family",
+    "color": "red.400",
+    "lessons": [
+      {
+        "name": "Order food"
+      },
+      {
+        "name": "Describe your family"
+      }
+    ]
+  }
+]
