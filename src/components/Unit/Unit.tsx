@@ -1,6 +1,6 @@
 import * as React from "react";
 import "../../styles/unit.css";
-import { NavLink } from "react-router-dom";
+import LessonModule from "./LessonModule";
 
 const Unit = () => {
   return (
@@ -10,12 +10,8 @@ const Unit = () => {
         <h3>Caption</h3>
       </div>
       <div className="lessons__container">
-        <NavLink
-          to={`lesson`}
-          className={({ isActive }) => (isActive ? "active" : "")}
-        >
-          Lesson
-        </NavLink>
+        <LessonModule />
+        <LessonModule />
       </div>
     </div>
   );

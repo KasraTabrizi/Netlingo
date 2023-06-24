@@ -7,7 +7,7 @@ import Profile from "./routes/Profile";
 import Learn from "./routes/Learn";
 import Settings from "./routes/Settings";
 import ErrorPage from "./components/ErrorPage";
-import Lesson from "./components/Unit/Lesson";
+import Lesson from "./routes/Lesson";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 
