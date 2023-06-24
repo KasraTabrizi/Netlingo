@@ -1,6 +1,7 @@
 import * as React from "react";
 import { NavLink } from "react-router-dom";
 import lessonImage from "../../assets/two-people-talking.jpg";
+import lessonImage2 from "../../assets/tapas-and-beer.jpg";
 import CheckedIcon from "../../assets/checked.svg";
 import "../../styles/lessonmodule.css";
 
