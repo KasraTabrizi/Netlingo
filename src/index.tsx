@@ -7,6 +7,7 @@ import Profile from "./routes/Profile";
 import Learn from "./routes/Learn";
 import Settings from "./routes/Settings";
 import ErrorPage from "./components/ErrorPage";
+import Lesson from "./components/Unit/Lesson";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
           {
             path: "/learn",
             element: <Learn />,
+          },
+          {
+            path: "/learn/lesson",
+            element: <Lesson />,
           },
           {
             path: "/profile",
