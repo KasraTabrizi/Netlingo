@@ -17,17 +17,5 @@
         "name": "What is your age?"
       }
     ]
-  },
-  {
-    "name": "Food and family",
-    "color": "red.400",
-    "lessons": [
-      {
-        "name": "Order food"
-      },
-      {
-        "name": "Describe your family"
-      }
-    ]
   }
 ]

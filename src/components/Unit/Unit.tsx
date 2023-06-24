@@ -24,9 +24,6 @@ const Unit = ({ name, color, number, lessons }: UnitProps) => {
       <Circle size="100px" bg="purple.400" color="white" cursor="pointer">
         Lesson 1
       </Circle>
-      <Circle size="100px" bg="purple.400" color="white" cursor="pointer">
-        Lesson 2
-      </Circle>
     </VStack>
   );
 };
