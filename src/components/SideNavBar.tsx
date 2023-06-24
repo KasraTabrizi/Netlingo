@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "../styles/sidebarnav.css";
 
 const SideNavBar = () => {
@@ -8,13 +9,28 @@ const SideNavBar = () => {
       <nav>
         <ul>
           <li>
-            <a href={`/contacts/1`}>Learn</a>
+            <NavLink
+              to={`learn`}
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Learn
+            </NavLink>
           </li>
           <li>
-            <a href={`/contacts/2`}>Profile</a>
+            <NavLink
+              to={`profile`}
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Profile
+            </NavLink>
           </li>
           <li>
-            <a href={`/contacts/2`}>Settings</a>
+            <NavLink
+              to={`settings`}
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Settings
+            </NavLink>
           </li>
         </ul>
       </nav>

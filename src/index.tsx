@@ -2,7 +2,7 @@ import "./styles/index.css";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { App } from "./App";
+import App from "./App";
 import Profile from "./routes/Profile";
 import Learn from "./routes/Learn";
 import Settings from "./routes/Settings";
@@ -21,16 +21,25 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/learn",
-        element: <Learn />,
-      },
-      {
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
-        path: "/settings",
-        element: <Settings />,
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            index: true,
+            element: <Learn />,
+          },
+          {
+            path: "/learn",
+            element: <Learn />,
+          },
+          {
+            path: "/profile",
+            element: <Profile />,
+          },
+          {
+            path: "/settings",
+            element: <Settings />,
+          },
+        ],
       },
     ],
   },
