@@ -3,6 +3,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { App } from "./App";
+import Profile from "./routes/Profile";
+import Learn from "./routes/Learn";
+import Settings from "./routes/Settings";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
@@ -16,6 +19,20 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/learn",
+        element: <Learn />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/settings",
+        element: <Settings />,
+      },
+    ],
   },
 ]);
 

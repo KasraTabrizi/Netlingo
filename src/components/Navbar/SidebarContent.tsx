@@ -1,4 +1,5 @@
 import React from "react";
+import "../../App.css";
 import {
   Box,
   CloseButton,
@@ -10,15 +11,16 @@ import {
 import { FiHome, FiSettings, FiUser } from "react-icons/fi";
 import { IconType } from "react-icons";
 import NavItem from "./NavItem";
+import { NavLink } from "react-router-dom";
 
 interface LinkItemProps {
   name: string;
   icon: IconType;
 }
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Learn", icon: FiHome },
-  { name: "Profile", icon: FiUser },
-  { name: "Settings", icon: FiSettings },
+  { name: "learn", icon: FiHome },
+  { name: "profile", icon: FiUser },
+  { name: "settings", icon: FiSettings },
 ];
 
 interface SidebarProps extends BoxProps {
@@ -43,9 +45,14 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
-        </NavItem>
+        <NavLink
+          to={link.name}
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          <NavItem key={link.name} icon={link.icon}>
+            {link.name}
+          </NavItem>
+        </NavLink>
       ))}
     </Box>
   );
