@@ -1,6 +1,27 @@
 import * as React from "react";
 import "../../styles/unit.css";
+import lessonImage from "../../assets/two-people-talking.jpg";
+import lessonImage2 from "../../assets/tapas-and-beer.jpg";
 import LessonModule from "./LessonModule";
+
+const lessons = [
+  {
+    id: 1,
+    title: "Lesson 1",
+    description: "Introduce yourself!",
+    avatar: lessonImage,
+    enabled: true,
+    finished: false,
+  },
+  {
+    id: 2,
+    title: "Lesson 2",
+    description: "Order food and drinks",
+    avatar: lessonImage2,
+    enabled: false,
+    finished: false,
+  },
+];
 
 const Unit = () => {
   return (
@@ -10,8 +31,9 @@ const Unit = () => {
         <h3>Caption</h3>
       </div>
       <div className="lessons__container">
-        <LessonModule />
-        <LessonModule />
+        {lessons.map((lesson) => {
+          return <LessonModule lesson={lesson} />;
+        })}
       </div>
     </div>
   );

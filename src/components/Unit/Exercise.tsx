@@ -1,5 +1,7 @@
 import * as React from "react";
 
-const Exercises = () => {};
+const Exercise = () => {
+  return <div>Exercise</div>;
+};
 
-export default Exercises;
+export default Exercise;
