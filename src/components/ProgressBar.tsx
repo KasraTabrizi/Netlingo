@@ -17,7 +17,7 @@ const ProgressBar = ({ progress }: ProgressBarProps) => {
     width: `${progress}%`,
     backgroundColor: "purple",
     borderRadius: "inherit",
-    transition: "width 1s ease-in-out",
+    transition: "width 0.4s ease-in-out",
   };
 
   return (

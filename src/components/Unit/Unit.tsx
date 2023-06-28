@@ -28,11 +28,11 @@ const Unit = () => {
     <div id="unit__container">
       <div className="unit__header">
         <h2>Unit 1</h2>
-        <h3>Caption</h3>
+        <h3>Introduction</h3>
       </div>
       <div className="lessons__container">
-        {lessons.map((lesson) => {
-          return <LessonModule lesson={lesson} />;
+        {lessons.map((lesson, index) => {
+          return <LessonModule key={index} lesson={lesson} />;
         })}
       </div>
     </div>
