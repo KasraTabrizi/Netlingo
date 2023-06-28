@@ -1,12 +1,13 @@
-import { ColorModeScript } from "@chakra-ui/react";
+import "./styles/index.css";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { App } from "./App";
+import App from "./App";
 import Profile from "./routes/Profile";
 import Learn from "./routes/Learn";
 import Settings from "./routes/Settings";
-import ErrorPage from "./components/ErrorPage/ErrorPage";
+import ErrorPage from "./components/ErrorPage";
+import Lesson from "./routes/Lesson";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 
@@ -21,16 +22,29 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/learn",
-        element: <Learn />,
-      },
-      {
-        path: "/profile",
-        element: <Profile />,
-      },
-      {
-        path: "/settings",
-        element: <Settings />,
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            index: true,
+            element: <Learn />,
+          },
+          {
+            path: "/learn",
+            element: <Learn />,
+          },
+          {
+            path: "/learn/:lessonId",
+            element: <Lesson />,
+          },
+          {
+            path: "/profile",
+            element: <Profile />,
+          },
+          {
+            path: "/settings",
+            element: <Settings />,
+          },
+        ],
       },
     ],
   },
@@ -38,7 +52,6 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <ColorModeScript />
     <RouterProvider router={router} />
   </React.StrictMode>
 );

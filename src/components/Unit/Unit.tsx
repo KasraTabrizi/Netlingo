@@ -1,30 +1,41 @@
 import * as React from "react";
-import { Center, Heading, Stack, VStack, Circle } from "@chakra-ui/react";
+import "../../styles/unit.css";
+import lessonImage from "../../assets/two-people-talking.jpg";
+import lessonImage2 from "../../assets/tapas-and-beer.jpg";
+import LessonModule from "./LessonModule";
 
-interface UnitProps {
-  name: string;
-  color: string;
-  number: Number;
-  lessons: Number;
-}
+const lessons = [
+  {
+    id: 1,
+    title: "Lesson 1",
+    description: "Introduce yourself!",
+    avatar: lessonImage,
+    enabled: true,
+    finished: false,
+  },
+  {
+    id: 2,
+    title: "Lesson 2",
+    description: "Order food and drinks",
+    avatar: lessonImage2,
+    enabled: false,
+    finished: false,
+  },
+];
 
-const Unit = ({ name, color, number, lessons }: UnitProps) => {
+const Unit = () => {
   return (
-    <VStack spacing="20" mb="10">
-      <Center bg={color} h="100" w="full" color="white" borderRadius="md">
-        <Stack spacing="0.5">
-          <Heading as="h1" size="xl" textAlign="center">
-            {`Unit ${number}`}
-          </Heading>
-          <Heading as="h2" size="md" textAlign="center">
-            {name}
-          </Heading>
-        </Stack>
-      </Center>
-      <Circle size="100px" bg="purple.400" color="white" cursor="pointer">
-        Lesson 1
-      </Circle>
-    </VStack>
+    <div id="unit__container">
+      <div className="unit__header">
+        <h2>Unit 1</h2>
+        <h3>Caption</h3>
+      </div>
+      <div className="lessons__container">
+        {lessons.map((lesson) => {
+          return <LessonModule lesson={lesson} />;
+        })}
+      </div>
+    </div>
   );
 };
 

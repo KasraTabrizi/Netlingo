@@ -1,0 +1,23 @@
+h2,
+h3 {
+  margin: 0.2em;
+}
+
+.unit__header {
+  padding: 1rem 0;
+  background-color: rgb(89, 199, 89);
+  border-radius: 15px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lessons__container {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
