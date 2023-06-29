@@ -15,14 +15,17 @@ const exercises = [
           {
             option: "Hey, I am Pedro. How are you?",
             valid: false,
+            selected: false,
           },
           {
             option: "Hey, I am Pedro. What is your name?",
             valid: true,
+            selected: false,
           },
           {
             option: "Hey, I am Pedro. How old are you?",
-            valid: true,
+            valid: false,
+            selected: false,
           },
         ],
       },
@@ -33,14 +36,17 @@ const exercises = [
           {
             option: "hombre",
             valid: false,
+            selected: false,
           },
           {
             option: "mujer",
             valid: true,
+            selected: false,
           },
           {
             option: "gato",
             valid: false,
+            selected: false,
           },
         ],
       },
