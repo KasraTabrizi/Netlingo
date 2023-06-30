@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../../styles/exercise.css";
 
 interface ExerciseProps {
@@ -9,33 +9,19 @@ interface ExerciseProps {
     answers: {
       option: string;
       valid: boolean;
-      selected: boolean;
     }[];
   };
   selectAnswerHandler: (valid: boolean) => void;
 }
 
 const Exercise = ({ exercise, selectAnswerHandler }: ExerciseProps) => {
-  const [exerciseObj, setExerciseObj] = useState(exercise);
+  const [selected, setSelected] = useState("");
 
-  useEffect(() => {
-    setExerciseObj({ ...exercise });
-  }, [exercise]);
-
-  const selectAnswer = (option: string) => {
-    const answers = exerciseObj.answers.map((answer) => {
-      if (answer.option === option) {
-        answer.selected = true;
-        selectAnswerHandler(answer.valid);
-      } else {
-        answer.selected = false;
-      }
-      return answer;
-    });
-    setExerciseObj({
-      ...exerciseObj,
-      answers,
-    });
+  const checkAnswer = (answer: any) => {
+    setSelected(answer.option);
+    if (answer.valid) {
+      selectAnswerHandler(answer.valid);
+    }
   };
 
   return (
@@ -47,8 +33,10 @@ const Exercise = ({ exercise, selectAnswerHandler }: ExerciseProps) => {
           return (
             <div
               key={index}
-              className={`option ${answer.selected ? "active" : ""}`}
-              onClick={() => selectAnswer(answer.option)}
+              className={`option ${
+                !answer.valid && selected === answer.option ? "error" : ""
+              }`}
+              onClick={() => checkAnswer(answer)}
             >
               {answer.option}
             </div>

@@ -33,3 +33,9 @@
   color: white;
   background-color: #52489c;
 }
+
+.error {
+  border: 1px solid #c25632;
+  color: white;
+  background-color: #c25632;
+}
