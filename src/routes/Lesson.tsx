@@ -15,17 +15,14 @@ const exercises = [
           {
             option: "Hey, I am Pedro. How are you?",
             valid: false,
-            selected: false,
           },
           {
             option: "Hey, I am Pedro. What is your name?",
             valid: true,
-            selected: false,
           },
           {
             option: "Hey, I am Pedro. How old are you?",
             valid: false,
-            selected: false,
           },
         ],
       },
@@ -36,17 +33,14 @@ const exercises = [
           {
             option: "hombre",
             valid: false,
-            selected: false,
           },
           {
             option: "mujer",
             valid: true,
-            selected: false,
           },
           {
             option: "gato",
             valid: false,
-            selected: false,
           },
         ],
       },
@@ -57,7 +51,6 @@ const exercises = [
 const Lesson = () => {
   const { lessonId } = useParams();
   const [listIndex, setListIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(false);
   const [progress, setProgress] = useState(0);
 
   const filterExerciseById = exercises.filter(
@@ -66,11 +59,9 @@ const Lesson = () => {
 
   const progressIncrement = 100 / filterExerciseById.length;
 
-  const checkAnswer = () => {
-    if (selectedAnswer) {
-      setListIndex(listIndex + 1);
-      setProgress(progress + progressIncrement);
-    }
+  const setSelectedAnswer = (valid: boolean) => {
+    setListIndex(listIndex + 1);
+    setProgress(progress + progressIncrement);
   };
 
   return (
@@ -86,9 +77,6 @@ const Lesson = () => {
       )}
       <div className="buttons__container">
         <button className="exit__button">Exit</button>
-        <button className="check_button" onClick={checkAnswer}>
-          Check
-        </button>
       </div>
     </div>
   );
