@@ -10,6 +10,8 @@ import ErrorPage from "./components/ErrorPage";
 import Lesson from "./routes/Lesson";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 const container = document.getElementById("root");
 if (!container) throw new Error("Failed to find the root element");
@@ -52,7 +54,9 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 
