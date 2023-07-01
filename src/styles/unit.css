@@ -5,7 +5,7 @@ h3 {
 
 .unit__header {
   padding: 1rem 0;
-  background-color: #59c759;
+  background-color: #52489c;
   border-radius: 15px;
   color: white;
   display: flex;
@@ -15,9 +15,17 @@ h3 {
 }
 
 .lessons__container {
-  margin-top: 3em;
+  margin: 3em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.disable {
+  background-color: #bebebe;
+}
+
+.finished {
+  background-color: #59c759;
 }

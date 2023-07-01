@@ -9,8 +9,8 @@ interface lessonModuleProps {
     title: string;
     description: string;
     avatar: string;
-    enabled: Boolean;
-    finished: Boolean;
+    enabled: boolean;
+    finished: boolean;
   };
 }
 

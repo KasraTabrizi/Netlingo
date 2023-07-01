@@ -6,7 +6,7 @@ import Exercise from "../components/Unit/Exercise";
 
 const exercises = [
   {
-    id: "1",
+    id: 1,
     list: [
       {
         title: "Read and Translate",
@@ -54,7 +54,7 @@ const Lesson = () => {
   const [progress, setProgress] = useState(0);
 
   const filterExerciseById = exercises.filter(
-    (exercise) => exercise.id === lessonId
+    (exercise) => exercise.id === Number(lessonId)
   )[0].list;
 
   const progressIncrement = 100 / filterExerciseById.length;
