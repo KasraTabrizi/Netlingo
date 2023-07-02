@@ -1,13 +1,15 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ProgressBar from "../components/ProgressBar";
 import Exercise from "../components/Unit/Exercise";
 import { useSelector, useDispatch } from "react-redux";
 import { updateLesson } from "../redux/unitSlice";
 import type { RootState } from "../redux/store";
+import "../styles/lesson.css";
 
 const Lesson = () => {
+  const navigate = useNavigate();
   const exercises = useSelector((state: RootState) => state.exercises);
   const dispatch = useDispatch();
   const { unitId, lessonId } = useParams();
@@ -50,16 +52,20 @@ const Lesson = () => {
     <div className="lesson__container">
       <ProgressBar progress={progress} />
       {listIndex === filterExerciseById.length ? (
-        <div>Finished</div>
+        <div className="lesson_finished__container">
+          <h2>Good job!</h2>
+          <div className="buttons__container">
+            <button className="exit__button" onClick={() => navigate(-1)}>
+              Exit
+            </button>
+          </div>
+        </div>
       ) : (
         <Exercise
           exercise={filterExerciseById[listIndex]}
           selectAnswerHandler={(valid: boolean) => setSelectedAnswer(valid)}
         />
       )}
-      <div className="buttons__container">
-        <button className="exit__button">Exit</button>
-      </div>
     </div>
   );
 };

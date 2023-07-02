@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import lessonImage from "../assets/two-people-talking.jpg";
-import lessonImage2 from "../assets/tapas-and-beer.jpg";
+import ImageLesson1 from "../assets/two-people-talking.jpg";
+import ImageLesson2 from "../assets/tapas-and-beer.jpg";
+import ImageLesson3 from "../assets/travel.jpg";
 
 type UnitUpdate = {
   id: number;
@@ -42,7 +43,7 @@ const initialState: UnitState[] = [
         id: 1,
         title: "Lesson 1",
         description: "Introduce yourself!",
-        avatar: lessonImage,
+        avatar: ImageLesson1,
         enabled: true,
         finished: false,
       },
@@ -50,7 +51,7 @@ const initialState: UnitState[] = [
         id: 2,
         title: "Lesson 2",
         description: "Order food and drinks",
-        avatar: lessonImage2,
+        avatar: ImageLesson2,
         enabled: false,
         finished: false,
       },
@@ -66,8 +67,8 @@ const initialState: UnitState[] = [
       {
         id: 1,
         title: "Lesson 1",
-        description: "Introduce yourself!",
-        avatar: lessonImage,
+        description: "Explore the city",
+        avatar: ImageLesson3,
         enabled: false,
         finished: false,
       },

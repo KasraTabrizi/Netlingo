@@ -1,0 +1,11 @@
+.lesson_finished__container {
+  height: 30em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lesson__container button {
+  margin: 2em 0;
+}

@@ -1,12 +1,10 @@
 import * as React from "react";
 import type { RootState } from "../redux/store";
 import Unit from "../components/Unit/Unit";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Learn = () => {
   const units = useSelector((state: RootState) => state.units);
-  // const dispatch = useDispatch();
-
   return (
     <div id="learn__container">
       {units.map((unit: any) => {
@@ -17,9 +15,3 @@ const Learn = () => {
 };
 
 export default Learn;
-
-{
-  /* <button onClick={() => dispatch(enableUnit(unit.id))}>
-enable next unit
-</button> */
-}

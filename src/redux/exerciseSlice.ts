@@ -36,7 +36,7 @@ const initialState: ExerciseState[] = [
         ],
       },
       {
-        title: "Select the missing word",
+        title: "Fill in the blank",
         question: "Soy Ana. Yo soy una ...",
         answers: [
           {
@@ -60,19 +60,37 @@ const initialState: ExerciseState[] = [
     list: [
       {
         title: "Read and Translate",
-        question: "Hola, yo soy Pedro. Como te llamas?",
+        question: "Tu comes pan?",
         answers: [
           {
-            option: "Hey, I am Pedro. How are you?",
-            valid: false,
-          },
-          {
-            option: "Hey, I am Pedro. What is your name?",
+            option: "Do you eat bread?",
             valid: true,
           },
           {
-            option: "Hey, I am Pedro. How old are you?",
+            option: "Does he eat bread?",
             valid: false,
+          },
+          {
+            option: "You are eating bread.",
+            valid: false,
+          },
+        ],
+      },
+      {
+        title: "Fill in the blanks",
+        question: "Yo ... agua. Tú ... leche",
+        answers: [
+          {
+            option: "bebe / bebes",
+            valid: false,
+          },
+          {
+            option: "bebes / bebo",
+            valid: false,
+          },
+          {
+            option: "bebo / bebes",
+            valid: true,
           },
         ],
       },
@@ -82,19 +100,19 @@ const initialState: ExerciseState[] = [
     id: 3,
     list: [
       {
-        title: "Read and Translate",
-        question: "Hola, yo soy Pedro. Como te llamas?",
+        title: "Fill in the blank",
+        question: "Yo tengo una reserva en el ...",
         answers: [
           {
-            option: "Hey, I am Pedro. How are you?",
+            option: "pan",
             valid: false,
           },
           {
-            option: "Hey, I am Pedro. What is your name?",
+            option: "hotel",
             valid: true,
           },
           {
-            option: "Hey, I am Pedro. How old are you?",
+            option: "coche",
             valid: false,
           },
         ],
