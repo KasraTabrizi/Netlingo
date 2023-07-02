@@ -5,7 +5,13 @@ import ProgressBar from "../components/ProgressBar";
 import Exercise from "../components/Unit/Exercise";
 import { useSelector, useDispatch } from "react-redux";
 import { updateLesson } from "../redux/unitSlice";
+import {
+  updateNetCoins,
+  updateCompletedLessons,
+  updateExperience,
+} from "../redux/statusSlice";
 import type { RootState } from "../redux/store";
+
 import "../styles/lesson.css";
 
 const Lesson = () => {
@@ -15,6 +21,8 @@ const Lesson = () => {
   const { unitId, lessonId } = useParams();
   const [listIndex, setListIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [netCoins, setNetCoins] = useState(0);
+  const [experience, setExperience] = useState(0);
 
   const filterExerciseById = units[Number(unitId) - 1].lessons.filter(
     (lesson: any) => lesson.id === Number(lessonId)
@@ -23,12 +31,20 @@ const Lesson = () => {
   const progressIncrement = 100 / filterExerciseById.length;
 
   const setSelectedAnswer = (valid: boolean) => {
-    setListIndex(listIndex + 1);
-    setProgress(progress + progressIncrement);
+    if (valid) {
+      setNetCoins(netCoins + 5);
+      setExperience(experience + 5);
+      setListIndex(listIndex + 1);
+      setProgress(progress + progressIncrement);
+    } else {
+      setNetCoins(netCoins - 2);
+    }
   };
 
   useEffect(() => {
     if (listIndex === filterExerciseById.length) {
+      dispatch(updateNetCoins(netCoins));
+      dispatch(updateExperience(experience));
       //update current lesson that got finished
       dispatch(
         updateLesson({
@@ -37,6 +53,7 @@ const Lesson = () => {
           lessonState: "finished",
         })
       );
+      dispatch(updateCompletedLessons());
       //enable next lesson if there is one
       dispatch(
         updateLesson({
@@ -46,7 +63,15 @@ const Lesson = () => {
         })
       );
     }
-  });
+  }, [
+    listIndex,
+    filterExerciseById,
+    dispatch,
+    experience,
+    netCoins,
+    lessonId,
+    unitId,
+  ]);
 
   return (
     <div className="lesson__container">
@@ -54,6 +79,16 @@ const Lesson = () => {
       {listIndex === filterExerciseById.length ? (
         <div className="lesson_finished__container">
           <h2>Good job!</h2>
+          <div className="status_finished__container">
+            <div className="single_status">
+              <h3>Experience gained:</h3>
+              <p>{experience} xp</p>
+            </div>
+            <div className="single_status">
+              <h3>Netcoins earned:</h3>
+              <p>{netCoins}</p>
+            </div>
+          </div>
           <div className="buttons__container">
             <button className="exit__button" onClick={() => navigate(-1)}>
               Exit

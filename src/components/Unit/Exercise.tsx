@@ -19,9 +19,7 @@ const Exercise = ({ exercise, selectAnswerHandler }: ExerciseProps) => {
 
   const checkAnswer = (answer: any) => {
     setSelected(answer.option);
-    if (answer.valid) {
-      selectAnswerHandler(answer.valid);
-    }
+    selectAnswerHandler(answer.valid);
   };
 
   return (
