@@ -10,15 +10,15 @@ import "../styles/lesson.css";
 
 const Lesson = () => {
   const navigate = useNavigate();
-  const exercises = useSelector((state: RootState) => state.exercises);
+  const units = useSelector((state: RootState) => state.units);
   const dispatch = useDispatch();
   const { unitId, lessonId } = useParams();
   const [listIndex, setListIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
-  const filterExerciseById = exercises.filter(
-    (exercise: any) => exercise.id === Number(lessonId)
-  )[0].list;
+  const filterExerciseById = units[Number(unitId) - 1].lessons.filter(
+    (lesson: any) => lesson.id === Number(lessonId)
+  )[0].exercises;
 
   const progressIncrement = 100 / filterExerciseById.length;
 
@@ -37,7 +37,7 @@ const Lesson = () => {
           lessonState: "finished",
         })
       );
-      //enable next lesson
+      //enable next lesson if there is one
       dispatch(
         updateLesson({
           unitId: Number(unitId),

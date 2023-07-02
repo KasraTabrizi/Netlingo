@@ -28,6 +28,14 @@ export interface UnitState {
     avatar: string;
     enabled: boolean;
     finished: boolean;
+    exercises: {
+      title: string;
+      question: string;
+      answers: {
+        option: string;
+        valid: boolean;
+      }[];
+    }[];
   }[];
 }
 
@@ -46,6 +54,44 @@ const initialState: UnitState[] = [
         avatar: ImageLesson1,
         enabled: true,
         finished: false,
+        exercises: [
+          {
+            title: "Read and Translate",
+            question: "Hola, yo soy Pedro. Como te llamas?",
+            answers: [
+              {
+                option: "Hey, I am Pedro. How are you?",
+                valid: false,
+              },
+              {
+                option: "Hey, I am Pedro. What is your name?",
+                valid: true,
+              },
+              {
+                option: "Hey, I am Pedro. How old are you?",
+                valid: false,
+              },
+            ],
+          },
+          {
+            title: "Fill in the blank",
+            question: "Soy Ana. Yo soy una ...",
+            answers: [
+              {
+                option: "hombre",
+                valid: false,
+              },
+              {
+                option: "mujer",
+                valid: true,
+              },
+              {
+                option: "gato",
+                valid: false,
+              },
+            ],
+          },
+        ],
       },
       {
         id: 2,
@@ -54,6 +100,44 @@ const initialState: UnitState[] = [
         avatar: ImageLesson2,
         enabled: false,
         finished: false,
+        exercises: [
+          {
+            title: "Read and Translate",
+            question: "Tu comes pan?",
+            answers: [
+              {
+                option: "Do you eat bread?",
+                valid: true,
+              },
+              {
+                option: "Does he eat bread?",
+                valid: false,
+              },
+              {
+                option: "You are eating bread.",
+                valid: false,
+              },
+            ],
+          },
+          {
+            title: "Fill in the blanks",
+            question: "Yo ... agua. Tú ... leche",
+            answers: [
+              {
+                option: "bebe / bebes",
+                valid: false,
+              },
+              {
+                option: "bebes / bebo",
+                valid: false,
+              },
+              {
+                option: "bebo / bebes",
+                valid: true,
+              },
+            ],
+          },
+        ],
       },
     ],
   },
@@ -71,6 +155,26 @@ const initialState: UnitState[] = [
         avatar: ImageLesson3,
         enabled: false,
         finished: false,
+        exercises: [
+          {
+            title: "Fill in the blank",
+            question: "Yo tengo una reserva en el ...",
+            answers: [
+              {
+                option: "pan",
+                valid: false,
+              },
+              {
+                option: "hotel",
+                valid: true,
+              },
+              {
+                option: "coche",
+                valid: false,
+              },
+            ],
+          },
+        ],
       },
     ],
   },
