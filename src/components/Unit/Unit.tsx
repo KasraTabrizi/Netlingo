@@ -1,10 +1,13 @@
 import * as React from "react";
 import "../../styles/unit.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import LessonModule from "./LessonModule";
+import { updateUnit, updateLesson } from "../../redux/unitSlice";
 
 interface UnitProps {
   unit: {
-    id: Number;
+    id: number;
     title: string;
     description: string;
     enabled: boolean;
@@ -21,6 +24,23 @@ interface UnitProps {
 }
 
 const Unit = ({ unit }: UnitProps) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    //finish unit when all lessons are finished
+    if (!unit.lessons.filter((lesson) => !lesson.finished).length) {
+      dispatch(updateUnit({ id: unit.id, state: "finished" }));
+      //enable the next unit
+      dispatch(updateUnit({ id: unit.id + 1, state: "enabled" }));
+      dispatch(
+        updateLesson({
+          unitId: unit.id + 1,
+          lessonId: 1,
+          lessonState: "enabled",
+        })
+      );
+    }
+  });
+
   return (
     <div id="unit__container">
       <div
@@ -33,7 +53,9 @@ const Unit = ({ unit }: UnitProps) => {
       </div>
       <div className="lessons__container">
         {unit.lessons.map((lesson: any) => {
-          return <LessonModule key={lesson.id} lesson={lesson} />;
+          return (
+            <LessonModule key={lesson.id} unitId={unit.id} lesson={lesson} />
+          );
         })}
       </div>
     </div>

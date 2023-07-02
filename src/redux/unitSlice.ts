@@ -3,8 +3,15 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import lessonImage from "../assets/two-people-talking.jpg";
 import lessonImage2 from "../assets/tapas-and-beer.jpg";
 
-type TodoId = {
+type UnitUpdate = {
   id: number;
+  state: "enabled" | "finished";
+};
+
+type LessonUpdate = {
+  unitId: number;
+  lessonId: number;
+  lessonState: "enabled" | "finished";
 };
 
 export interface UnitState {
@@ -69,20 +76,35 @@ const initialState: UnitState[] = [
 ];
 
 export const unitSlice = createSlice({
-  name: "unit",
+  name: "units",
   initialState,
   reducers: {
-    enableUnit: (state, action: PayloadAction<TodoId>) => {
+    updateUnit: (state, action: PayloadAction<UnitUpdate>) => {
       state.map((unit: any) => {
-        if (unit.enabled || unit.id === action.payload) {
-          return (unit.enabled = true);
+        if (unit[`${action.payload.state}`] || unit.id === action.payload.id) {
+          return (unit[`${action.payload.state}`] = true);
         }
-        return (unit.enabled = false);
+        return (unit[`${action.payload.state}`] = false);
+      });
+    },
+    updateLesson: (state, action: PayloadAction<LessonUpdate>) => {
+      const unitIndex = state.findIndex(
+        (unit) => unit.id === action.payload.unitId
+      );
+      state[unitIndex].lessons.map((lesson: any) => {
+        if (
+          lesson[`${action.payload.lessonState}`] ||
+          lesson.id === action.payload.lessonId
+        ) {
+          return (lesson[`${action.payload.lessonState}`] = true);
+        } else {
+          return (lesson[`${action.payload.lessonState}`] = false);
+        }
       });
     },
   },
 });
 
-export const { enableUnit } = unitSlice.actions;
+export const { updateUnit, updateLesson } = unitSlice.actions;
 
 export default unitSlice.reducer;

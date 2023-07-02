@@ -1,60 +1,21 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProgressBar from "../components/ProgressBar";
 import Exercise from "../components/Unit/Exercise";
-
-const exercises = [
-  {
-    id: 1,
-    list: [
-      {
-        title: "Read and Translate",
-        question: "Hola, yo soy Pedro. Como te llamas?",
-        answers: [
-          {
-            option: "Hey, I am Pedro. How are you?",
-            valid: false,
-          },
-          {
-            option: "Hey, I am Pedro. What is your name?",
-            valid: true,
-          },
-          {
-            option: "Hey, I am Pedro. How old are you?",
-            valid: false,
-          },
-        ],
-      },
-      {
-        title: "Select the missing word",
-        question: "Soy Ana. Yo soy una ...",
-        answers: [
-          {
-            option: "hombre",
-            valid: false,
-          },
-          {
-            option: "mujer",
-            valid: true,
-          },
-          {
-            option: "gato",
-            valid: false,
-          },
-        ],
-      },
-    ],
-  },
-];
+import { useSelector, useDispatch } from "react-redux";
+import { updateLesson } from "../redux/unitSlice";
+import type { RootState } from "../redux/store";
 
 const Lesson = () => {
-  const { lessonId } = useParams();
+  const exercises = useSelector((state: RootState) => state.exercises);
+  const dispatch = useDispatch();
+  const { unitId, lessonId } = useParams();
   const [listIndex, setListIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
   const filterExerciseById = exercises.filter(
-    (exercise) => exercise.id === Number(lessonId)
+    (exercise: any) => exercise.id === Number(lessonId)
   )[0].list;
 
   const progressIncrement = 100 / filterExerciseById.length;
@@ -63,6 +24,27 @@ const Lesson = () => {
     setListIndex(listIndex + 1);
     setProgress(progress + progressIncrement);
   };
+
+  useEffect(() => {
+    if (listIndex === filterExerciseById.length) {
+      //update current lesson that got finished
+      dispatch(
+        updateLesson({
+          unitId: Number(unitId),
+          lessonId: Number(lessonId),
+          lessonState: "finished",
+        })
+      );
+      //enable next lesson
+      dispatch(
+        updateLesson({
+          unitId: Number(unitId),
+          lessonId: Number(lessonId) + 1,
+          lessonState: "enabled",
+        })
+      );
+    }
+  });
 
   return (
     <div className="lesson__container">

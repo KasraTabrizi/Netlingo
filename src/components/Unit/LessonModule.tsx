@@ -4,6 +4,7 @@ import CheckedIcon from "../../assets/checked.svg";
 import "../../styles/lessonmodule.css";
 
 interface lessonModuleProps {
+  unitId: number;
   lesson: {
     id: Number;
     title: string;
@@ -14,7 +15,7 @@ interface lessonModuleProps {
   };
 }
 
-const LessonModule = ({ lesson }: lessonModuleProps) => {
+const LessonModule = ({ unitId, lesson }: lessonModuleProps) => {
   return (
     <div className="lesson_module__container">
       <div>
@@ -27,7 +28,12 @@ const LessonModule = ({ lesson }: lessonModuleProps) => {
         </div>
         <p>{lesson.description}</p>
         <NavLink
-          to={`lesson/${lesson.id}`}
+          to={`unit/${unitId}/lesson/${lesson.id}`}
+          onClick={(e) => {
+            if (!lesson.enabled) {
+              e.preventDefault();
+            }
+          }}
           className={lesson.enabled ? "enabled" : "disabled"}
         >
           Start
