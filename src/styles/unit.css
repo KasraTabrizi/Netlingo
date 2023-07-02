@@ -4,6 +4,7 @@ h3 {
 }
 
 .unit__header {
+  margin-left: 22rem;
   padding: 1rem 0;
   background-color: #52489c;
   border-radius: 15px;
@@ -16,6 +17,7 @@ h3 {
 
 .lessons__container {
   margin: 3em;
+  margin-left: 22rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
