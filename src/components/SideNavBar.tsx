@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/sidebarnav.css";
+import StatusBar from "./StatusBar";
 
 const SideNavBar = () => {
   return (
@@ -34,6 +35,7 @@ const SideNavBar = () => {
           </li>
         </ul>
       </nav>
+      <StatusBar />
     </div>
   );
 };
