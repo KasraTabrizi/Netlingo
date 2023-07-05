@@ -22,24 +22,30 @@ const Exercise = ({ exercise, selectAnswerHandler }: ExerciseProps) => {
     selectAnswerHandler(answer.valid);
   };
 
+  const renderAnswerOption = (
+    answer: { option: string; valid: boolean },
+    index: number
+  ) => {
+    const isSelectedAndInvalid = !answer.valid && selected === answer.option;
+    const optionClassName = `option ${isSelectedAndInvalid ? "error" : ""}`;
+
+    return (
+      <div
+        key={index}
+        className={optionClassName}
+        onClick={() => checkAnswer(answer)}
+      >
+        {answer.option}
+      </div>
+    );
+  };
+
   return (
     <div className="exercise__container">
       <h2>{exercise.title}</h2>
       <p className="question__container">{exercise.question}</p>
       <div className="multiple_choice__container">
-        {exercise.answers.map((answer, index) => {
-          return (
-            <div
-              key={index}
-              className={`option ${
-                !answer.valid && selected === answer.option ? "error" : ""
-              }`}
-              onClick={() => checkAnswer(answer)}
-            >
-              {answer.option}
-            </div>
-          );
-        })}
+        {exercise.answers.map(renderAnswerOption)}
       </div>
     </div>
   );
