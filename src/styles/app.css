@@ -37,3 +37,8 @@ button:active {
   padding: 2rem 4rem;
   width: 100%;
 }
+
+.profile__container,
+.settings__container {
+  margin-left: 22rem;
+}
