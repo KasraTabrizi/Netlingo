@@ -30,7 +30,6 @@ const Unit = ({ unit }: UnitProps) => {
   useEffect(() => {
     //finish unit when all lessons are finished
     if (!unit.lessons.filter((lesson) => !lesson.finished).length) {
-      console.log("triggered");
       dispatch(updateUnit({ id: unit.id, state: "finished" }));
 
       //enable the next unit if it exists
