@@ -57,11 +57,9 @@ const Unit = ({ unit }: UnitProps) => {
         <h3>{unit.description}</h3>
       </div>
       <div className="lessons__container">
-        {unit.lessons.map((lesson: any) => {
-          return (
-            <LessonModule key={lesson.id} unitId={unit.id} lesson={lesson} />
-          );
-        })}
+        {unit.lessons.map((lesson: any) => (
+          <LessonModule key={lesson.id} unitId={unit.id} lesson={lesson} />
+        ))}
       </div>
     </div>
   );
