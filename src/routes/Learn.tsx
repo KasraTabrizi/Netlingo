@@ -7,9 +7,9 @@ const Learn = () => {
   const units = useSelector((state: RootState) => state.units);
   return (
     <div id="learn__container">
-      {units.map((unit: any) => {
-        return <Unit key={unit.id} unit={unit} />;
-      })}
+      {units.map((unit: any) => (
+        <Unit key={unit.id} unit={unit} />
+      ))}
     </div>
   );
 };
