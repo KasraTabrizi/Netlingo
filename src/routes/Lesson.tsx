@@ -45,6 +45,7 @@ const Lesson = () => {
     if (listIndex === filterExerciseById.length) {
       dispatch(updateNetCoins(netCoins));
       dispatch(updateExperience(experience));
+      dispatch(updateCompletedLessons());
       //update current lesson that got finished
       dispatch(
         updateLesson({
@@ -53,7 +54,6 @@ const Lesson = () => {
           lessonState: "finished",
         })
       );
-      dispatch(updateCompletedLessons());
       //enable next lesson if there is one
       dispatch(
         updateLesson({
