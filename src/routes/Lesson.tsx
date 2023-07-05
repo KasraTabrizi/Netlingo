@@ -24,9 +24,9 @@ const Lesson = () => {
   const [netCoins, setNetCoins] = useState(0);
   const [experience, setExperience] = useState(0);
 
-  const filterExerciseById = units[Number(unitId) - 1].lessons.filter(
+  const filterExerciseById: any = units[Number(unitId) - 1].lessons.find(
     (lesson: any) => lesson.id === Number(lessonId)
-  )[0].exercises;
+  )?.exercises;
 
   const progressIncrement = 100 / filterExerciseById.length;
 
