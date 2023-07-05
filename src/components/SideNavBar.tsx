@@ -11,7 +11,7 @@ const SideNavBar = () => {
         <ul>
           <li>
             <NavLink
-              to={`learn`}
+              to={`/`}
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               Learn
