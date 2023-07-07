@@ -60,6 +60,7 @@ const Lesson = () => {
   const progressIncrement = 100 / filterExerciseById.length;
 
   const setSelectedAnswer = (valid: boolean) => {
+    //valid argument will be used in redux
     setListIndex(listIndex + 1);
     setProgress(progress + progressIncrement);
   };
