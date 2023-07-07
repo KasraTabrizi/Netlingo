@@ -32,12 +32,12 @@ const Lesson = () => {
 
   const setSelectedAnswer = (valid: boolean) => {
     if (valid) {
-      setNetCoins(netCoins + 5);
-      setExperience(experience + 5);
-      setListIndex(listIndex + 1);
-      setProgress(progress + progressIncrement);
+      setNetCoins((netCoins) => netCoins + 5);
+      setExperience((experience) => experience + 5);
+      setListIndex((listIndex) => listIndex + 1);
+      setProgress((progress) => progress + progressIncrement);
     } else {
-      setNetCoins(netCoins - 2);
+      setNetCoins((netCoins) => netCoins - 2);
     }
   };
 
